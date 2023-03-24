@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EtherValueCalculator {
+    address payable public owner; // declare an address variable to store the owner of the contract
+    uint256 public valueInWei; // declare a uint256 variable to store the ether value in wei
+    uint256 public valueInEther; // declare a uint256 variable to store the ether value in ether
+    uint256 public valueInGwei; // declare a uint256 variable to store the ether value in gwei
+
+    constructor() {
+        owner = payable(msg.sender); // set the owner of the contract to the address that deployed the contract
+    }
+
+    function calculateEtherValue() public payable { // declare a function that can receive ether from the user and calculate its value
+        valueInWei = msg.value; // set the ether value in wei to the amount of ether sent to the contract
+        valueInEther = valueInWei / 1 ether; // calculate the ether value in ether by dividing the ether value in wei by 1 ether
+        valueInGwei = valueInWei / 1 gwei; // calculate the ether value in gwei by dividing the ether value in wei by 1 gwei
+    }
+
+    function withdraw() public { // declare a function that can be called by the owner to withdraw the ether stored in the contract
+        require(msg.sender == owner, "Only the owner can withdraw the funds"); // check that the caller is the owner of the contract
+        owner.transfer(address(this).balance); // transfer all the ether stored in the contract to the owner's address
+    }
+}
