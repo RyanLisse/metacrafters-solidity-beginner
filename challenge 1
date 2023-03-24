@@ -1,0 +1,50 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.19;
+
+contract MyContract {
+// Declare state variables
+bool myBool;
+uint myUint;
+string myString;
+address myAddress;
+// Set bool value
+function setBool(bool _myBool) public {
+    myBool = _myBool;
+}
+
+// Get bool value
+function getBool() public view returns (bool) {
+    return myBool;
+}
+
+// Set uint value
+function setUint(uint _myUint) public {
+    myUint = _myUint;
+}
+
+// Get uint value
+function getUint() public view returns (uint) {
+    return myUint;
+}
+
+// Set string value
+function setString(string memory _myString) public {
+    myString = _myString;
+}
+
+// Get string value
+function getString() public view returns (string memory) {
+    return myString;
+}
+
+// Set address value
+function setAddress(address _myAddress) public {
+    myAddress = _myAddress;
+}
+
+// Get address value
+function getAddress() public view returns (address) {
+    return myAddress;
+}
+}
